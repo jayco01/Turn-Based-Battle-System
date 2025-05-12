@@ -18,6 +18,8 @@ namespace Turn_Based_Battle_System
         public int Hp { get { return currentHp; } }
         public string UnitName { get { return unitName; } }
 
+        public bool IsDead { get { return currentHp <= 0; } }
+
         public Unit(int maxHp,  int attackPower, int healPower, string unitName)
         {
             this.maxHp = maxHp;
@@ -41,6 +43,10 @@ namespace Turn_Based_Battle_System
         public void TakeDamage(int damage)
         {
             currentHp -= damage;
+
+            if (IsDead) {
+                Console.WriteLine($"{unitName} has been defeated!");
+            }
         }
 
         public void Heal()
