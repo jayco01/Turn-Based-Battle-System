@@ -30,14 +30,14 @@ namespace Turn_Based_Battle_System
         {
             double rng = random.NextDouble();
             rng = (rng / 2) + 0.75f; //Set the attack damage range from 75% To 125%(critical hit)
-            int randDamage = (int)(this.attackPower * rng);
+            int randDamage = (int)(attackPower * rng);
             unitAttack.TakeDamage(randDamage);
             Console.WriteLine($"{unitName} attacks {unitAttack.unitName} and deals {randDamage} damage!");
         }
 
         public void TakeDamage(int damage)
         {
-            this.currentHp -= damage;
+            currentHp -= damage;
         }
     }
 }
