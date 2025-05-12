@@ -15,6 +15,9 @@ namespace Turn_Based_Battle_System
         private string unitName;
         private Random random;
 
+        public int Hp { get { return currentHp; } }
+        public string UnitName { get { return unitName; } }
+
         public Unit(int maxHp,  int attackPower, int healPower, string unitName)
         {
             this.maxHp = maxHp;
@@ -38,6 +41,16 @@ namespace Turn_Based_Battle_System
         public void TakeDamage(int damage)
         {
             currentHp -= damage;
+        }
+
+        public void Heal()
+        {
+            double rng = random.NextDouble();
+            rng = (rng / 2) + 0.75f; //Set the heal range from 75% To 125%
+            int randHeal = (int)(rng * healPower);
+            //Ensure that player/enemy does not heal past their maxHP
+            currentHp = ((randHeal + currentHp) > maxHp) ? maxHp : (randHeal + currentHp);
+            Console.WriteLine($"{unitName} heals {randHeal}HP");
         }
     }
 }

@@ -10,9 +10,10 @@ namespace Turn_Based_Battle_System
     {
         static void Main(string[] args)
         {
-            Unit player = new Unit(100, 20, 12, "Player Warrior");
+            Unit player = new Unit(100, 20, 12, "Player");
             Unit enemy = new Unit(75, 10, 25, "Enemy Mage");
 
+            Console.WriteLine($"{player.UnitName} HP = {player.Hp}. {enemy.UnitName} HP = {enemy.Hp}");
             Console.WriteLine("Player turn! What will you do?");
             string choice = Console.ReadLine();
 
