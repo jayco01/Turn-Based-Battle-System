@@ -10,23 +10,24 @@ namespace Turn_Based_Battle_System
     {
         static void Main(string[] args)
         {
-            Unit player = new Unit(100, 20, 12, "Player");
-            Unit enemy = new Unit(85, 15, 20, "Enemy Mage");
+            Unit player = new Warrior("Garen");
+            Unit enemy = new Mage("Lux");
             Random random = new Random();
 
-            while (!player.IsDead || !enemy.IsDead)
+            while (!player.IsDead && !enemy.IsDead)
             {
                 Console.WriteLine($"{player.UnitName} HP = {player.Hp}. {enemy.UnitName} HP = {enemy.Hp}");
-                Console.WriteLine("Player turn! What will you do?");
+                Console.WriteLine($"{player.UnitName}'s turn! What will you do?");
                 Console.WriteLine("Type 'a' to attack, 'f' to escape, and 'h' to heal.");
                 string choice = Console.ReadLine();
-                Boolean invalidChoice = (choice == null) || ( (!choice.Equals("a", StringComparison.OrdinalIgnoreCase) && !choice.Equals("f", StringComparison.OrdinalIgnoreCase) && !choice.Equals("h", StringComparison.OrdinalIgnoreCase)) ) ? true:false;
+                bool invalidChoice = (choice == null) || ( (!choice.Equals("a", StringComparison.OrdinalIgnoreCase) && !choice.Equals("f", StringComparison.OrdinalIgnoreCase) && !choice.Equals("h", StringComparison.OrdinalIgnoreCase)) );
+
                 while (invalidChoice)
                 {
                     Console.WriteLine("You chose an invalid option. Please enter a valid option.");
                     Console.WriteLine("Type 'a' to attack, 'f' to escape, and 'h' to heal.");
                     choice = Console.ReadLine();
-                    invalidChoice = (choice == null) || ((!choice.Equals("a", StringComparison.OrdinalIgnoreCase) && !choice.Equals("f", StringComparison.OrdinalIgnoreCase) && !choice.Equals("h", StringComparison.OrdinalIgnoreCase))) ? true : false;
+                    invalidChoice = (choice == null) || ((!choice.Equals("a", StringComparison.OrdinalIgnoreCase) && !choice.Equals("f", StringComparison.OrdinalIgnoreCase) && !choice.Equals("h", StringComparison.OrdinalIgnoreCase)));
                 } 
 
                 if (choice.Equals("a", StringComparison.OrdinalIgnoreCase)) 
@@ -51,7 +52,7 @@ namespace Turn_Based_Battle_System
 
                 int rand = random.Next(0, 2);
 
-                if (rand == 0)
+                if (rand == 0 || enemy.Hp > (enemy.MaxHp * 0.75))
                 {
                     enemy.Attack(player);
                 }
