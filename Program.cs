@@ -20,8 +20,16 @@ namespace Turn_Based_Battle_System
                 Console.WriteLine("Player turn! What will you do?");
                 Console.WriteLine("Type 'a' to attack, 'f' to escape, and 'h' to heal.");
                 string choice = Console.ReadLine();
+                Boolean invalidChoice = (choice == null) || ( (!choice.Equals("a", StringComparison.OrdinalIgnoreCase) && !choice.Equals("f", StringComparison.OrdinalIgnoreCase) && !choice.Equals("h", StringComparison.OrdinalIgnoreCase)) ) ? true:false;
+                while (invalidChoice)
+                {
+                    Console.WriteLine("You chose an invalid option. Please enter a valid option.");
+                    Console.WriteLine("Type 'a' to attack, 'f' to escape, and 'h' to heal.");
+                    choice = Console.ReadLine();
+                    invalidChoice = (choice == null) || ((!choice.Equals("a", StringComparison.OrdinalIgnoreCase) && !choice.Equals("f", StringComparison.OrdinalIgnoreCase) && !choice.Equals("h", StringComparison.OrdinalIgnoreCase))) ? true : false;
+                } 
 
-                if (choice.Equals("a", StringComparison.OrdinalIgnoreCase))
+                if (choice.Equals("a", StringComparison.OrdinalIgnoreCase)) 
                 {
                     player.Attack(enemy);
                 }
