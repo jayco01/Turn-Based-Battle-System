@@ -10,7 +10,10 @@ namespace Turn_Based_Battle_System
     {
         static void Main(string[] args)
         {
-            Unit player = new Warrior("Garen");
+            Console.WriteLine("Enter your Character's name.");
+            string playerName = Console.ReadLine();
+
+            Unit player = new Warrior(playerName);
             Unit enemy = new Mage("Lux");
             Random random = new Random();
 
