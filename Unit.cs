@@ -8,9 +8,6 @@ namespace Turn_Based_Battle_System
 {
     internal class Unit
     {
-        // 
-        // FIELDS
-        // 
         private int currentHp;
         private int maxHp;
         private int attackPower;
@@ -18,9 +15,6 @@ namespace Turn_Based_Battle_System
         private string unitName;
         private Random random;
 
-        // 
-        // PUBLIC READ-ONLY PROPERTIES
-        // 
         public int MaxHp 
         {
             get { return maxHp; }

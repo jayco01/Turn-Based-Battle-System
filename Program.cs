@@ -30,22 +30,29 @@ namespace Turn_Based_Battle_System
             Console.Write("Enter your Character's name: ");
             string playerName = Console.ReadLine().Trim();
 
-            Unit player = null;
-            Unit enemy = null;
-            switch (unitSelected)
-            {
-                case "w":
-                    player = new Warrior(playerName);
-                    enemy = new Mage(); 
-                    break;
-                case "m":
-                    player = new Mage(playerName);
-                    enemy = new Warrior(); 
-                    break;
-            }
+            var (player, enemy) = AssignUnits(unitSelected, playerName);
 
             BattleManager battle = new BattleManager(player, enemy);
             battle.StartBattle();
+        }
+
+
+        public static (Unit, Unit) AssignUnits(string unitSelected, string playerName)
+        {
+            Unit player = null;
+            Unit enemy = null;
+            switch (unitSelected) //Assign the selected unit type to the player
+            {
+                case "w":
+                    player = new Warrior(playerName);
+                    enemy = new Mage();
+                    break;
+                case "m":
+                    player = new Mage(playerName);
+                    enemy = new Warrior();
+                    break;
+            }
+            return (player, enemy);
         }
     }
 }
