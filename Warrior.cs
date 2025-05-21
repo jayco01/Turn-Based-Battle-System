@@ -9,6 +9,8 @@ namespace Turn_Based_Battle_System
     internal class Warrior : Unit
     {
         public Warrior(string name) : base(120, 22, 12, name) { }
+        public Warrior() : base(120, 22, 12, "Garren") { }
+        //quick action and refactoring -> genrate constructor -> select data feild
 
         public override void Attack(Unit target)
         {

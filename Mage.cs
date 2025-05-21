@@ -9,6 +9,7 @@ namespace Turn_Based_Battle_System
     internal class Mage : Unit
     {
         public Mage(string name) : base(100, 17, 25, name) { }
+        public Mage() : base(100, 17, 25, "Lux") { }
 
         public override void Attack(Unit target)
         {

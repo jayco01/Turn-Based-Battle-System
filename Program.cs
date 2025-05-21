@@ -10,32 +10,42 @@ namespace Turn_Based_Battle_System
     {
         static void Main(string[] args)
         {
+            List<string> unitTypesList = new List<string>{"w", "m"};
+
+            string unitSelected = null;
+            bool isTypeFound = unitTypesList.Contains(unitSelected);
+            bool isValidType = unitSelected != null && isTypeFound;
 
             Console.WriteLine("Choose a character class type that you would like to play.");
-            Console.WriteLine("'w' for Warrior");
-            Console.WriteLine("'m' for Mage");
-            string characterType = Console.ReadLine();
-            bool isWarrior = characterType.Equals("w", StringComparison.OrdinalIgnoreCase);
-            bool isMage = characterType.Equals("m", StringComparison.OrdinalIgnoreCase);
+            Console.WriteLine("'w' for Warrior & 'm' for Mage");
+            while (!isValidType) {
+                unitSelected = Console.ReadLine().ToLower().Trim();
+                isTypeFound = unitTypesList.Contains(unitSelected);
+                isValidType = unitSelected != null && isTypeFound;
+                if (!isValidType) { Console.WriteLine("Error: Please choose a valid character type."); }
+            }
+            Console.WriteLine();
 
+            Console.WriteLine();
             Console.Write("Enter your Character's name: ");
-            string playerName = Console.ReadLine();
+            string playerName = Console.ReadLine().Trim();
 
             Unit player = null;
             Unit enemy = null;
-
-            if (isWarrior)
+            switch (unitSelected)
             {
-                player = new Warrior(playerName);
-                enemy = new Mage("Lux");
-            }
-            else if (isMage) 
-            {
-                player = new Mage(playerName);
-                enemy = new Warrior("Garen");
+                case "w":
+                    player = new Warrior(playerName);
+                    enemy = new Mage(); 
+                    break;
+                case "m":
+                    player = new Mage(playerName);
+                    enemy = new Warrior(); 
+                    break;
             }
 
-            BattleManager battle = new BattleManager(player, enemy);  
+            BattleManager battle = new BattleManager(player, enemy);
+            battle.StartBattle();
         }
     }
 }
