@@ -42,5 +42,6 @@ namespace Turn_Based_Battle_System
             target.TakeDamage(damage);
             Console.WriteLine((castCount > 1) ? $"{UnitName} casted {castCount} attack spells, dealing {damage} damage on {target.UnitName}" : $"{UnitName} casted an attack spell, dealing {damage} damage on {target.UnitName}");
         }
+
     }
 }
