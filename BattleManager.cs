@@ -17,7 +17,9 @@ namespace Turn_Based_Battle_System
             this.PlayerUnit = player;
             this.EnemyUnit = enemy;
             this.HasPlayerFled = false;
-        }//closes BattleManager
+        }//closes BattleManager constructor
+
+        private Random rng = new Random();
 
         public void StartBattle() 
         {
@@ -28,7 +30,7 @@ namespace Turn_Based_Battle_System
                 Console.WriteLine("Type 'a' to attack, 'f' to escape, and 'h' to heal.");
                 string choice = Console.ReadLine();
                 bool invalidChoice = (choice == null) || ((!choice.Equals("a", StringComparison.OrdinalIgnoreCase) && !choice.Equals("f", StringComparison.OrdinalIgnoreCase) && !choice.Equals("h", StringComparison.OrdinalIgnoreCase)));
-                Random rng = new Random();
+                
 
                 while (invalidChoice)
                 {
