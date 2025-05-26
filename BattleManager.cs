@@ -47,6 +47,7 @@ namespace Turn_Based_Battle_System
                 else if (choice.Equals("f", StringComparison.OrdinalIgnoreCase))
                 {
                     Console.WriteLine("You fled the fight!");
+                    HasPlayerFled = true;
                     break;
                 }
                 else
